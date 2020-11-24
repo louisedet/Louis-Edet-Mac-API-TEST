@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "66ef7e79-c866-4dbd-ad78-cfab82581c78",
+		"name": "Louis_Edet_API_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get",
+			"item": [
+				{
+					"name": "doc-echo endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a95a9aa-089a-40cd-b04b-62288199f807",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name has OK string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "jsonblog endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8a4c2fd-caec-492b-875c-bc8211f83623",
+								"exec": [
+									"// Test 1: Confirm the status code is 200\r",
+									"pm.test(\"Status code is 200\", function (){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Test 2: confirm the code string is \"OK\"\r",
+									"pm.test(\"Status code name has OK string\", function (){\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Confirm the response time is not more than 5 mins\r",
+									"pm.test(\"Response time is less than 300,000s\", function (){\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(300000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"eve.holt@reqres.in\",\r\n  \"password\": \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{reqBaseUrl}}/api/register",
+							"host": [
+								"{{reqBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DEL",
+			"item": [
+				{
+					"name": "Delete a todo per ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "776745d6-5ddf-488f-9656-4934e3c3e703",
+								"exec": [
+									"// Test 1: Confirm the status code is 204\r",
+									"pm.test(\"Status code is 204\", function (){\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"// Test 2: confirm the code string is \"No Content\"\r",
+									"pm.test(\"Status code name has Ok string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"// Test 3: Confirm the response time is not more than 5 mins\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.respnseTime).to.be.below(300000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{reqBaseUrl}}/api/users/2",
+							"host": [
+								"{{reqBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
